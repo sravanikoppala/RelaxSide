@@ -1,0 +1,15 @@
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.card-block:hover {
+	background: rgb(201, 196, 233);
+	opacity: 0.3;
+	color: #223343;
+}
+
+.mynewclass:active {
+    background-color: green;
+} 

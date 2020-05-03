@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-
-
 navbar{
 	padding: .8rem;
 }
@@ -16,6 +14,7 @@ navbar{
 	transform: translateY(-100%);
 	text-shadow: 1px 1px 10px #000;
 	font-weight: 500%;
+	padding-bottom: 1rem;
 }
 
 .card-img-top {
@@ -23,6 +22,17 @@ navbar{
     height: 15vw;
     object-fit: cover;
 }
+
+.btn-primary {
+	background-color: #6648b1;
+	border: 1px solid #6648b1
+}
+
+.btn-primary:hover{
+	background-color: #563d7c;
+	border: 1px solid #563d7c
+}
+
 
 .card-block:hover {
 	background: rgb(201, 196, 233);

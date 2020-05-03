@@ -9,13 +9,19 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-	<link href="style.css" rel="stylesheet">
+        <script type="text/javascript" src="./scripts/Winwheel.js"></script>
+		  <script type="text/javascript" src="./scripts/categories.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+              <link rel="stylesheet" href="./css/main.css" type="text/css" />
+
+	<link href="./css/style.css" rel="stylesheet">
 </head>
 <script>
 
 function change(element) {
     $(element).toggleClass('mynewclass');
 }
+    
 
 </script>
 <body>
@@ -151,33 +157,164 @@ function change(element) {
         </div>
     </div>    
 </div>
+
 <!--- Two Column Section -->
 <div class="container-fluid"> 
 
+        <div align="center">
+            
+            <img src="images/icon.png" style="margin-left: 230px" height= 40px >
+            <br />
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <div class="power_controls">
+                        
+                        <img id="spin_button" src="images/spin_off.png" alt="Spin" onClick="startSpin();" />
+                        <br /><br />
+                        &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                    </div>
+                </td>
+                <td width="50" height="100" class="the_wheel" align="center" valign="center">
+                    <canvas id="canvas" width="434" height="434">
+                        <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+                    </canvas>
+                </td>
+            </tr>
+            </table>
+        </div>
+              <h3 id="h3"></h3>
 </div>
+<script>
+var ar = categories;
+        function shuffle(arr,carr){
+                var values=[];
+                var i=0,j=0,k=0;
+                for(i=0;i<carr.length;i++){
+                    for(j=0;j<arr.categories.length;j++){
+                        if(carr[i]==arr.categories[j].name){
+                        var x=arr.categories[j].values;
+                            for(k=0;k<x.length;k++)
+                            {
+                                values.push({'text':x[k]});
+                            }
+                        }
+                    }
+                }
+                var shuffled = values.sort(() => 0.5 - Math.random());
+                let selected = shuffled.slice(0, 10);
+                
+                return selected;
+            }
+         var arr=[];
+            // Create new wheel object specifying the parameters at creation time.
+            arr=shuffle(ar,['gardening', 'cooking']);
+            console.log(arr);
+            let theWheel = new Winwheel({
+                'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
+                'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
+                'textFontSize'    : 20,         // Set default font size for the segments.
+                'textOrientation' : 'horizontal', // Make text vertial so goes down from the outside of wheel.
+                'textAlignment'   : 'center',    // Align text to outside of wheel.
+                'numSegments'     : 10,         // Specify number of segments.
+                'segments'        : arr,            // Define segments including colour and text.
+            
+                'animation' :           // Specify the animation to use.
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 10,    // Duration in seconds.
+                    'spins'    : 3,     // Default number of complete spins.
+                    'callbackFinished' : alertPrize,
+                    'callbackSound'    : playSound,   // Function to call when the tick sound is to be triggered.
+                    'soundTrigger'     : 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
+                },
+                'pins' :				// Turn pins on.
+                {
+                    'number'     : 10,
+                    'fillStyle'  : 'silver',
+                    'outerRadius': 4,
+                }
+            });
+            console.log(theWheel);
 
+            // Loads the tick audio sound in to an audio object.
+            let audio = new Audio('sounds/tick.mp3');
 
+            // This function is called when the sound is to be played.
+            function playSound()
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0;
 
-<!--- Fixed background -->
+                // Play the sound.
+                audio.play();
+            }
 
+            // Vars used by the code in this page to do power controls.
+            let wheelPower    = 2;
+            let wheelSpinning = false;
 
-<!--- Emoji Section -->
+              // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin()
+            {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false) {
+                    // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+                    // to rotate with the duration of the animation the quicker the wheel spins.
+                    if (wheelPower == 1) {
+                        theWheel.animation.spins = 3;
+                    } else if (wheelPower == 2) {
+                        theWheel.animation.spins = 6;
+                    } else if (wheelPower == 3) {
+                        theWheel.animation.spins = 10;
+                    }
 
-  
-<!--- Meet the team -->
+                    // Disable the spin button so can't click again while wheel is spinning.
+                    document.getElementById('spin_button').src       = "images/spin_off.png";
+                    document.getElementById('spin_button').className = "";
 
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
 
-<!--- Cards -->
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+                }
+            }
 
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel()
+            {
+                
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                location.reload();
+                theWheel.draw();                // Call draw to render changes to the wheel.
 
-<!--- Two Column Section -->
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            }
 
-
-<!--- Connect -->
-
-
-<!--- Footer -->
-
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment)
+            {
+                // Just alert to the user what happened.
+                // In a real project probably want to do something more interesting than this with the result.
+                if (indicatedSegment.text == 'LOOSE TURN') {
+                    alert('Sorry but you loose a turn.');
+                } else if (indicatedSegment.text == 'BANKRUPT') {
+                    alert('Oh no, you have gone BANKRUPT!');
+                } else {
+                    document.getElementById("h3").innerHTML=indicatedSegment.text;
+                }
+            }
+            </script>
 
 
 

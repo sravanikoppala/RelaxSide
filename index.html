@@ -10,10 +10,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
         <script type="text/javascript" src="./scripts/Winwheel.js"></script>
+		  <script type="text/javascript" src="./scripts/categories.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-              <link rel="stylesheet" href="./scripts/main.css" type="text/css" />
+              <link rel="stylesheet" href="./css/main.css" type="text/css" />
 
-	<link href="./scripts/style.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
 </head>
 <script>
 
@@ -185,7 +186,7 @@ function change(element) {
               <h3 id="h3"></h3>
 </div>
 <script>
-var ar = JSON.parse('{"categories":[{"name":"gardening","values":["cutting","cleaning","plucking","watering","plant","tree","fruit \\n plants","veggie \\n plants"]},{"name":"cooking","values":["baking","frying","boiling \\n vegetables","mixing \\n dough","salad","pasta","noodles","rice","beans","salsa","dessert"]}]}');
+var ar = categories;
         function shuffle(arr,carr){
                 var values=[];
                 var i=0,j=0,k=0;
@@ -205,18 +206,7 @@ var ar = JSON.parse('{"categories":[{"name":"gardening","values":["cutting","cle
                 
                 return selected;
             }
-         var arr=[
-                    {'text': "boiling \n vegetables"},
-                    {'text': "cutting"},
-                    {'text': "cleaning"},
-                    {'text': "salsa"},
-                    {'text': "veggie \n plants"},
-                    {'text': "plant"},
-                    {'text': "noodles"},
-                    {'text': "tree"},
-                    {'text': "frying"},
-                    {'text': "baking"}
-                ];
+         var arr=[];
             // Create new wheel object specifying the parameters at creation time.
             arr=shuffle(ar,['gardening', 'cooking']);
             console.log(arr);
@@ -248,7 +238,7 @@ var ar = JSON.parse('{"categories":[{"name":"gardening","values":["cutting","cle
             console.log(theWheel);
 
             // Loads the tick audio sound in to an audio object.
-            let audio = new Audio('tick.mp3');
+            let audio = new Audio('sounds/tick.mp3');
 
             // This function is called when the sound is to be played.
             function playSound()

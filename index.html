@@ -18,77 +18,60 @@
 </head>
 <script>
 
-function change(element) {
-    $(element).toggleClass('mynewclass');
-}
     
 
 </script>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top>
- <div class="container-fluid">    
-    <a class="navbar-brand" href="#get-started">Stress Diddles</a>
-
-</div>
-</nav>
 <!--- Image Slider -->
 <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="images/cat.jpg" alt="First slide">
 	   <div class="carousel-caption d-none d-md-block">
-	   <h1 class="display-2">Welcome to RelaxSide!</h1>
-	   <button type="button" class="btn btn-outline-light-lg">Instructions</button>
-	   <button type="button"  class="btn btn-primary-lg" href="#get-started">Get Started!</button>
+	   <h1 class="display-2">Welcome to RelaxSide!</h1>	  
+	   <a href="#get-started"><button type="button"  class="btn btn-primary btn-lg">Get Started!</button></a>
 		
         </div>
     </div>
 </div>
-
-
-<!--- Jumbotron -->
+<div id="get-started">
 <div class="container-fluid padding">
 <div class="row welcome text-center padding"> 
 	<div class="col-12">
-		<h1 class="display-4">How to use?</h1>
+		<h1 class="display-4">Select more than two favourite categories</h1>
 	</div>
 	<hr>
-	<div class="col-12">
-		<h1 class="lead">Just Enter your name, pick your favourite categories and we'll generate a fun task to pop your stress bubble!</h1>
-	</div>
 </div>
 </div>
-<div class="container">
- <div id="get-started">
+<div class="container"> 
     <div class="card-deck mt-4 ">
         <div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/food.jpg" alt="Card image cap">
             </div>
-            <a  type="button" id="myButton1" class="card-footer btn btn-outline-info stretched-link" ng-click="change(this)">Eat</a> 			
+            <a  type="button" id="myButton1" class="card-footer btn btn-outline stretched-link" onClick="change(this)">Eat</a> 			
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/yoga.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Yoga</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Yoga</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/drink.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Drink</a> 
+            <a class="card-footer btn btn-outline stretched-link" onClick="change(this)">Drink</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">                
                 <img class="card-img-top" src="images/cook.jpg" alt="Card image cap">
             </div>
 
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Cook</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Cooking</a> 
         </div>
     </div>    
 </div>
@@ -99,28 +82,28 @@ function change(element) {
                 
                 <img class="card-img-top" src="images/playing.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Playing</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Playing</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/painting.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Painting</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Painting</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/garden.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Gardening</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Gardening</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/meditate.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Meditating</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Meditating</a> 
         </div>
     </div>    
 </div>
@@ -131,34 +114,44 @@ function change(element) {
                 
                 <img class="card-img-top" src="images/dance.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Dance</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Dance</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/sing.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Sing</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Sing</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/fun.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Fun</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Fun</a> 
         </div>
 		<div class="card text-center">
             <div class="card-block">
                 
                 <img class="card-img-top" src="images/listen.jpg" alt="Card image cap">
             </div>
-            <a href=# class="card-footer btn btn-outline-info stretched-link">Listen</a> 
+            <a  class="card-footer btn btn-outline stretched-link" onClick="change(this)">Listen</a> 
         </div>
     </div>    
 </div>
 </div>
 
-<!--- Two Column Section -->
+<br/>
+<br/>
+<br/>
+<div id="spin-wheel">
+<div class="container-fluid padding">
+<div class="row welcome text-center padding"> 
+	<div class="col-12">
+		<h1 class="display-4">Spin wheel to randomize an activity</h1>
+	</div>
+	<hr>
+</div>
 <div class="container-fluid"> 
 
         <div align="center">
@@ -172,7 +165,7 @@ function change(element) {
                         
                         <img id="spin_button" src="images/spin_off.png" alt="Spin" onClick="startSpin();" />
                         <br /><br />
-                        &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                       <a href="#" onClick="resetWheel(); return false;">Shuffle Activities</a><br />
                     </div>
                 </td>
                 <td width="50" height="100" class="the_wheel" align="center" valign="center">
@@ -183,9 +176,11 @@ function change(element) {
             </tr>
             </table>
         </div>
-              <h3 id="h3"></h3>
+              <h3 id="h3" align="center"></h3>
+</div>
 </div>
 <script>
+var elem=[],arr=[];
 var ar = categories;
         function shuffle(arr,carr){
                 var values=[];
@@ -206,10 +201,14 @@ var ar = categories;
                 
                 return selected;
             }
-         var arr=[];
-            // Create new wheel object specifying the parameters at creation time.
-            arr=shuffle(ar,['gardening', 'cooking']);
-            console.log(arr);
+			
+function change(element) {
+elem.push($(element).text().toLowerCase());
+    $(element).addClass('mynewclass');
+	
+
+
+        arr=shuffle(ar,elem);
             let theWheel = new Winwheel({
                 'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
                 'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
@@ -235,8 +234,9 @@ var ar = categories;
                     'outerRadius': 4,
                 }
             });
+			
             console.log(theWheel);
-
+}
             // Loads the tick audio sound in to an audio object.
             let audio = new Audio('sounds/tick.mp3');
 
@@ -311,7 +311,7 @@ var ar = categories;
                 } else if (indicatedSegment.text == 'BANKRUPT') {
                     alert('Oh no, you have gone BANKRUPT!');
                 } else {
-                    document.getElementById("h3").innerHTML=indicatedSegment.text;
+                    document.getElementById("h3").innerHTML="Your activity: "+indicatedSegment.text;
                 }
             }
 </script>
